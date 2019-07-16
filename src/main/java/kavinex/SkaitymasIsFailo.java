@@ -78,8 +78,27 @@ public class SkaitymasIsFailo implements Skaitymas {
 		return this.file_line != null;
 	}
 	
-	public String paimtiFragmenta() {
+	public Uzsakymas paimtiFragmenta() {
 		
-		return this.file_line;
+		// System.out.println( "\t" + was_read );
+		String[] langeliai = this.file_line.split ( "," );
+		
+		Uzsakymas uzsakymas = new Uzsakymas(); 
+		
+		uzsakymas.setPav(langeliai[0]);
+		uzsakymas.setTrukme_ruosimo ( 0 );
+		uzsakymas.setTrukme_kaitinimo ( 0 );
+		
+		if ( langeliai.length > 1 ) {
+		
+			uzsakymas.setTrukme_ruosimo ( Integer.parseInt( langeliai [ 1 ] ) );		
+		}
+		
+		if ( langeliai.length > 2 ) {
+
+			uzsakymas.setTrukme_kaitinimo ( Integer.parseInt( langeliai [ 2 ] ) );
+		}		
+		
+		return uzsakymas;
 	}
 }

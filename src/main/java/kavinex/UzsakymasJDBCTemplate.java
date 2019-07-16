@@ -35,16 +35,10 @@ public class UzsakymasJDBCTemplate implements UzsakymasDAO, Skaitymas  {
 			nr_uzsakymo++;
 		}
 		
-		public String paimtiFragmenta() {
+		public Uzsakymas paimtiFragmenta() {
 			
 			return 	
-				// 	uzsakymai [ nr_uzsakymo ].getId() 
-				// + "," +
-					uzsakymai [ nr_uzsakymo ].getPav() 
-				+ "," +
-					uzsakymai [ nr_uzsakymo ].getTrukme_ruosimo()
-				+ "," +
-					uzsakymai [ nr_uzsakymo ].getTrukme_kaitinimo() 
+				uzsakymai [ nr_uzsakymo ] 
 			;		
 				
 		}

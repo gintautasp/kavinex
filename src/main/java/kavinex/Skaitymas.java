@@ -8,5 +8,5 @@ public interface Skaitymas {
 	
 	public void skaitytiFragmenta();
 	
-	public String paimtiFragmenta();
+	public Uzsakymas paimtiFragmenta();
 }

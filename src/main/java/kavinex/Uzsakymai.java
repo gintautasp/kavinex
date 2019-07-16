@@ -32,9 +32,7 @@ public class Uzsakymai {
 
 	public void nuskaityti () {
 		
-		String was_read = null;
-		int trukme_ruosimo; 
-		int trukme_kaitinimo;
+		Uzsakymas was_read = null;
 
 		skait.pradeti();
 		System.out.println ( "----------- duomenu failo turinys:\n" );
@@ -43,35 +41,28 @@ public class Uzsakymai {
 			
 			was_read = skait.paimtiFragmenta();
 			
-			System.out.println( "\t" + was_read );
-			String[] langeliai = was_read.split ( "," );
-			
-			trukme_ruosimo = 0;
-			trukme_kaitinimo = 0;
-			
-			if ( langeliai.length > 1 ) {
-			
-				trukme_ruosimo = Integer.parseInt( langeliai [ 1 ] );		
-			}
-			
-			if ( langeliai.length > 2 ) {
-
-				trukme_kaitinimo = Integer.parseInt( langeliai [ 2 ] );
-			}
-			
-			if ( trukme_ruosimo == 0 ) {
+			if ( was_read.getTrukme_ruosimo() == 0 ) {
 				
-				patiekalai [ kiek_patiekalu ] = new Patiekalas ( langeliai [0] );
+				patiekalai [ kiek_patiekalu ] = new Patiekalas ( was_read.getPav() );
 				
 			} else {
 				
-				if ( trukme_kaitinimo == 0) {
+				if ( was_read.getTrukme_kaitinimo() == 0) {
 					
-					patiekalai [ kiek_patiekalu ] = new RuosiamasPatiekalas ( langeliai [0], trukme_ruosimo );
+					patiekalai [ kiek_patiekalu ] = new RuosiamasPatiekalas (
+							
+							was_read.getPav()
+							, was_read.getTrukme_ruosimo() 
+					);
 					
 				} else {
 					
-					patiekalai [ kiek_patiekalu ] = new KarstasPatiekalas ( langeliai [0], trukme_ruosimo, trukme_kaitinimo );						
+					patiekalai [ kiek_patiekalu ] = new KarstasPatiekalas (
+							
+						was_read.getPav()
+						, was_read.getTrukme_ruosimo()
+						, was_read.getTrukme_kaitinimo() 
+					);						
 				}
 			}
 			kiek_patiekalu++;
