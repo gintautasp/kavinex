@@ -1,0 +1,34 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   <bean id="uzsakymai" class="kavinex.Uzsakymai">
+   		<property name="skait" ref="skaitymas_is_failo" />
+   </bean>
+   <bean id="skaitymas_is_failo" class="kavinex.SkaitymasIsFailo">
+   		<property name="vardas_failo" value="src/uzsakymai.csv" />
+   </bean>
+   <bean id="patiekalas" class="kavinex.Patiekalas">
+   </bean>
+   <bean id="patiekalas_ruosiamas" class="kavinex.RuosiamasPatiekalas">
+   </bean>
+   <bean id="patiekalas_karstas" class="kavinex.KarstasPatiekalas">
+   </bean>
+<bean id = "dataSource" 
+   class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+   <!-- property name = "driverClassName" value = "com.mysql.jdbc.Driver"/ -->
+   <property name = "url" value = "jdbc:mysql://localhost:3306/kavine"/>
+   <property name = "username" value = "root"/>
+   <property name = "password" value = ""/>
+</bean>
+
+   <!-- Definition for studentJDBCTemplate bean -->
+   <bean id = "uzsakymasJDBCTemplate" 
+      class = "kavinex.UzsakymasJDBCTemplate">
+      <property name = "dataSource" ref = "dataSource" />    
+   </bean>   
+   
+   
+</beans>
